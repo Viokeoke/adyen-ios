@@ -43,14 +43,6 @@ let package = Package(
             targets: ["AdyenDropIn"]
         ),
         .library(
-            name: "AdyenWeChatPay",
-            targets: ["AdyenWeChatPay"]
-        ),
-        .library(
-            name: "AdyenCashAppPay",
-            targets: ["AdyenCashAppPay"]
-        ),
-        .library(
             name: "AdyenTwint",
             targets: ["AdyenTwint"]
         ),
@@ -71,14 +63,6 @@ let package = Package(
         .package(
             url: "https://github.com/Adyen/adyen-networking-ios",
             exact: "2.0.0"
-        ),
-        .package(
-            url: "https://github.com/Adyen/adyen-wechatpay-ios",
-            exact: "2.1.0"
-        ),
-        .package(
-            url: "https://github.com/cashapp/cash-app-pay-ios-sdk",
-            exact: "0.5.1"
         )
     ],
     targets: [
@@ -162,23 +146,6 @@ let package = Package(
             ],
             path: "AdyenDropIn",
             exclude: ["Info.plist"]
-        ),
-        .target(
-            name: "AdyenWeChatPay",
-            dependencies: [
-                .product(name: "AdyenWeChatPayInternal", package: "adyen-wechatpay-ios"),
-                .target(name: "AdyenActions")
-            ],
-            path: "AdyenWeChatPay/WeChatPayActionComponent"
-        ),
-        .target(
-            name: "AdyenCashAppPay",
-            dependencies: [
-                .target(name: "Adyen"),
-                .product(name: "PayKit", package: "cash-app-pay-ios-sdk"),
-                .product(name: "PayKitUI", package: "cash-app-pay-ios-sdk")
-            ],
-            path: "AdyenCashAppPay"
         ),
         .target(
             name: "AdyenTwint",
